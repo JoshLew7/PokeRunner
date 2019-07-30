@@ -1,5 +1,6 @@
 import Adventure
 import StartMenu
+import PokeStats
 
 def setupScreen():
     global bulb, cha, lil

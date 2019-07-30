@@ -157,6 +157,3 @@ def drawScreen():
         playerY = 526
     elif playerX in range(385,600) and playerY > 527:
         playerY = 526
-
-    print("Y: " + str(playerY))
-    print("X: " + str(playerX))
