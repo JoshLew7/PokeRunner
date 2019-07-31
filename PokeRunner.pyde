@@ -43,7 +43,7 @@ def draw():
         PokeSelection.setupScreen()
         PokeSelection.drawScreen()
         playMusic(False)
-    print("orange")
+    print("fish")
 
 
         
