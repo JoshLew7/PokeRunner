@@ -1,5 +1,5 @@
 # import PokeStats
-
+import PokeSelection
 
 def setupScreen():
     from random import  randint
@@ -24,12 +24,28 @@ def setupScreen():
     
     
     # Characters
-    bulb = False
-    cha = False
-    lil = True
+    if PokeSelection.pokemon == "bulbasaur":
+        bulb = True
+        print("bulb")
+    else:
+        bulb = False
+        print("no bulb")
+        
+    if PokeSelection.pokemon == "charmander":
+        cha = True
+        print("cha")
+    else:
+        cha = False
+        print("no cha")
+        
+    if PokeSelection.pokemon == "squirtle":
+        lil = True
+        print("lil")
+    else:
+        lil = False
+        print("no lil")
    
      # Background
-    size(600, 600)
     img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)
     
