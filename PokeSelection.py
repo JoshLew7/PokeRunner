@@ -2,6 +2,11 @@ import Adventure
 import StartMenu
 import PokeStats
 
+cha = False
+bulb = False
+lil = False
+
+
 def setupScreen():
     global sf
     backgroundImg = loadImage("starter.jpg")
