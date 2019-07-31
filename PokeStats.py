@@ -1,6 +1,7 @@
 from random import randint
 import math
 import random
+import PokeSelection
 movelist = ["tackle", "ember", "water gun", "vine whip", "flamethrower", "thunderbolt"]
 
 moves = [
@@ -907,3 +908,7 @@ def getpoketype1(num):
 
 def getpoketype2(num):
     return poke[num]['type2']
+
+def setupGame():
+    pokemon = PokeSelection.pokemon
+    pokemonlevel = randint(1,100)

@@ -1,6 +1,7 @@
 # import PokeStats
 
-def setup():
+
+def setupScreen():
     from random import  randint
     
     # BulbaTrap's Attacks
@@ -14,10 +15,7 @@ def setup():
     
     # health bars
     global enemyHealth, Health
-    
-    # starter health
-    global bulbNum, chaNum, sqNum
-    
+
     global bulb, cha, lil
     
     global enemypicturelist, enemy
@@ -26,20 +24,20 @@ def setup():
     
     
     # Characters
-    bulb = True
+    bulb = False
     cha = False
-    lil = False
+    lil = True
    
      # Background
     size(600, 600)
-    img = loadImage("BattleScreen copy.jpg")
+    img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)
     
     enemyHealth = 500
     Health = 1000
     
-    enemypicturelist = [ loadImage("1-Bulbasaur copy.png"), loadImage("squirtle3 copy.png"), 
-                loadImage("charmandere3 copy.png"), loadImage("pika7.png")]
+    enemypicturelist = [ loadImage("1-Bulbasaur.png"), loadImage("squirtle3.png"), 
+                loadImage("charmandere3.png"), loadImage("pika7.png")]
     
     enemy = (enemypicturelist[randint(0,3)])
     
@@ -64,20 +62,6 @@ def setup():
     bubble = 0
     watergun = 0
     
-    # bulbNum = int(1000)
-    # chaNum = int(1000)
-    # sqNum = int(1000)
-    
-    # health bars
-    # bulbHealth = bulbNum
-    # chaHealth = 1000
-    # squHealth = 1000
-    
-    
-    # fill(255)
-    # rect(0, 0, 100, 50)
-    # fill(0)
-    # text("Health: ", 10, 25)
    
     
     # set's bulbatrap's attacks in the boxes
@@ -238,17 +222,21 @@ def setup():
         
         run = False
 
+
+def setBattleState(state):
+    global modeState
+    modeState = state
         
+def getModeState():
+    return modeState 
     
-def draw():
+def drawScreen():
     from random import  randint
     
-    img = loadImage("BattleScreen copy.jpg")
+    img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)
     
-    # img2 = loadImage("gold-silver-back.png")
-    # image(img2, 100, 350, 100, 100)
-    
+
     
       # BulbaTrap's Attacks
     global growl, tackle, vinewhip, toxic
@@ -303,10 +291,7 @@ def draw():
             enemyHealth = enemyHealth - 30
             Health-=(enemyattacklist[randint(0,2)])
             print(enemyHealth)
-            #rect(0,0,600,80)
-            
-            # else:
-            #     bulbHealth = 100
+           
             # vine whip
         if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
             print("vine whip")
@@ -386,16 +371,14 @@ def draw():
             textSize(50)
             text("Run", 435, 525) 
             
-            # text("Health: " + str(enemyHealth), 10, 57)
-            # text("Health: " + str(enemyHealth), 10, 500)
-            
+
         
      
      
       # cha fuego's attacks       
     if cha == True:
-        img = enemy
-        image(img, 395, 115, 150, 150)
+        # img = enemy
+        image(enemy, 395, 115, 150, 150)
         img2 = loadImage("charback.png")
         image(img2, 100, 350, 100, 100)
         
@@ -511,8 +494,8 @@ def draw():
     if lil == True:
         img2 = loadImage("squback.png")
         image(img2, 100, 310, 160, 160)
-        img = enemy
-        image(img, 395, 115, 150, 150)
+        # img = enemy
+        image(enemy, 395, 115, 150, 150)
         
         
         fill(255)
@@ -527,10 +510,7 @@ def draw():
         rect(380, 295, 215, 50)
         fill(0)
         text("Health: " + str(Health), 387, 340)
-        
-        # img = loadImage("pika7.png")
-        # image(img, 395, 115, 150, 150)
-    
+   
          
          
          # headbutt
@@ -610,72 +590,4 @@ def draw():
             fill(0)
             textSize(52)
             text("Run", 435, 525)
-print ("orange")
-
-    
-
-
-
-# def mouseClicked():
-    
-#     # BulbaTrap's Attacks
-#     global growl, tackle, vinewhip, toxic
-    
-#     # Cha Fuego's Attacks
-#     global scratch, slash, ember, firespin
-    
-#      # Lil Squirt's Attacks
-#     global headbutt, tailwhip, bubble, watergun
-    
-#     # health bars
-#     global bulbHealth, chaHealth, squHealth
-    
-#     global bulbNum, chaNum, sqNum
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+            

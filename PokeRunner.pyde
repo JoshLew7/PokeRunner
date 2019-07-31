@@ -2,19 +2,8 @@ import Adventure
 import PokeSelection
 import PokeStats
 import StartMenu
+import Battle_Screen
 add_library("sound")
-
-
-count = 0
-
-def playMusic(bool):
-    if bool == True:    
-        sf.play()
-    elif bool == False:
-        sf.stop()
-    else:
-        pass
-            
 
 def setup():
     global sf
@@ -22,29 +11,21 @@ def setup():
     Adventure.setAdventureState(False)
     StartMenu.setStartState(True)
     PokeSelection.setSelectionState(False)
+    Battle_Screen.setBattleState(False)
     sf = SoundFile(this,"pokemusic.mp3")
+    StartMenu.setupScreen()
 
-
+    
 def draw():
-    global count
     if Adventure.getModeState() == True:
-        while count < 1:
-            count = 0    
-            Adventure.setupScreen()
-            count += 1
-        Adventure.drawScreen()   
-        playMusic(False)
+        Adventure.drawScreen()  
     elif StartMenu.getModeState() == True:
-        StartMenu.setupScreen()
         StartMenu.drawScreen()
-        playMusic(False)
-
     elif PokeSelection.getModeState() == True:  
-        PokeSelection.setupScreen()
         PokeSelection.drawScreen()
-        playMusic(False)
-    print("fish")
-
+    elif Battle_Screen.getModeState() == True:
+        Battle_Screen.drawScreen()
+    
 
         
         

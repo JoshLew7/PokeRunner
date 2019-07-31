@@ -1,3 +1,8 @@
+import PokeSelection
+import PokeStats
+import StartMenu
+import Battle_Screen
+
 def setupScreen():
     global playerX,playerY
     global backgroundImg,character,sprite
@@ -36,7 +41,6 @@ def setupScreen():
     pokeTLX2 = int(random(10,126))
     pokeTLY2 = int(random(96,153))
     
-    size(600,600)    
     backgroundImg = loadImage("Pokemap.png")
     frontFacing = loadImage("frontFacing.png")
     backFacing = loadImage("backFacing.png")
@@ -96,7 +100,6 @@ def setAdventureState(state):
     modeState = state
         
 def getModeState():
-    print("Adventure State: " + str(modeState))
     return modeState
 
     
@@ -113,31 +116,49 @@ def drawScreen():
     if (keyPressed):
         if (key == 'w'):
             sprite = backFacing
-            playerY -= 1
+            playerY -= 2
         elif(key == 's'):
             sprite = frontFacing
-            playerY += 1
+            playerY += 2
         elif(key == 'a'):
             sprite = leftFacing
-            playerX -= 1
+            playerX -= 2
         elif(key == 'd'):
             sprite = rightFacing
-            playerX += 1
+            playerX += 2
     
     if playerX in range(pokeBLX1,pokeBLX1 + 25) and playerY in range(pokeBLY1,pokeBLY1 + 25) or playerX in range(pokeBLX2,pokeBLX2 + 25) and playerY in range(pokeBLY2,pokeBLY2 + 25) :
         print("detect bot left")
+        setAdventureState(False)
+        PokeSelection.setSelectionState(False)
+        StartMenu.setStartState(False)
+        Battle_Screen.setBattleState(True)
 
     elif playerX in range(pokeBRX1,pokeBRX1 + 25) and playerY in range(pokeBRY1,pokeBRY1 + 25) or playerX in range(pokeBRX2,pokeBRX2 + 25) and playerY in range(pokeBRY2,pokeBRY2 + 25):
         print("detect bot right")
+        setAdventureState(False)
+        PokeSelection.setSelectionState(False)
+        StartMenu.setStartState(False)
+        Battle_Screen.setBattleState(True)
+        Battle_Screen.setupScreen()
 
     elif playerX in range(pokeTRX1,pokeTRX1 + 25) and playerY in range(pokeTRY1,pokeTRY1 + 25) or playerX in range(pokeTRX2,pokeTRX2 + 25) and playerY in range(pokeTRY2,pokeTRY2 + 25) :
         print("detect top right")
+        setAdventureState(False)
+        PokeSelection.setSelectionState(False)
+        StartMenu.setStartState(False)
+        Battle_Screen.setBattleState(True)
+        Battle_Screen.setupScreen()
 
     elif playerX in range(pokeTLX1,pokeTLX1 + 25) and playerY in range(pokeTLY1,pokeTLY1 + 25) or playerX in range(pokeTLX2,pokeTLX2 + 25) and playerY in range(pokeTLY2,pokeTLY2 + 25) :
         print("detect top left")
-
+        setAdventureState(False)
+        PokeSelection.setSelectionState(False)
+        StartMenu.setStartState(False)
+        Battle_Screen.setBattleState(True)
+        Battle_Screen.setupScreen()
         
-        
+    #To get the boundaries print mouse x mouse y and get top right bot left corner
     if playerX in range(0,328) and playerY in range(285,347): #Left River
         if playerY < 325:
             playerY = 284
