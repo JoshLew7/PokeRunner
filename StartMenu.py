@@ -5,7 +5,6 @@ import Adventure
 import PokeSelection
 
 def setupScreen():
-    global music
     size(600,600)
     backgroundImg = loadImage("pokeground.jpg")
     pokehoodText = loadImage("gameText.png")

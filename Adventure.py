@@ -5,7 +5,6 @@ def setupScreen():
     global pokeBLX1,pokeBLY1,pokeBRX1,pokeBRY1,pokeTLX1,pokeTLY1,pokeTRX1,pokeTRY1
     global pokeBLX2,pokeBLY2,pokeBRX2,pokeBRY2,pokeTLX2,pokeTLY2,pokeTRX2,pokeTRY2
     
-    AdventureMode = True
     playerX = 350
     playerY = 310
     #Bottom Left
