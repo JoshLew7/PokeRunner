@@ -63,7 +63,7 @@ def drawScreen():
             Adventure.setupScreen()
             Lil = True
 
-        elif mouseX in range(241,362) and mouseY in range(244,344):
+        if mouseX in range(241,362) and mouseY in range(244,344):
             pokemon = "bulbasaur"
             Battle_Screen.blub = True
             setSelectionState(False)
@@ -73,7 +73,7 @@ def drawScreen():
             Adventure.setupScreen()
             Bul = True
 
-        elif mouseX in range(426,564) and mouseY in range(227,361):
+        if mouseX in range(426,564) and mouseY in range(227,361):
             pokemon = "charmander"
             Battle_Screen.cha = True
             setSelectionState(False)

@@ -1,0 +1,35 @@
+# import PokeStats
+
+def setup():
+
+            # tail whip
+            fill(255)
+            rect(30, 450, 150, 50)
+            fill(0)
+            textSize(33)
+            text("Tail Whip", 32, 490)
+            tailwhip = 35
+            
+                # bubble
+            fill(255)
+            rect(205, 450, 150, 50)
+            fill(0)
+            textSize(45)
+            text("Bubble", 206, 494)
+            bubble = 40
+                
+                # water gun
+            fill(255)
+            rect(205, 510, 150, 50)
+            fill(0)
+            textSize(29)
+            text("Water Gun", 208, 550)
+            watergun = 70
+                
+                # run
+            fill(255)
+            rect(410, 480, 140, 52)
+            fill(0)
+            textSize(52)
+            text("Run", 435, 525)
+            

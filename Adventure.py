@@ -128,14 +128,15 @@ def drawScreen():
             playerX += 2
     
     if playerX in range(pokeBLX1,pokeBLX1 + 25) and playerY in range(pokeBLY1,pokeBLY1 + 25) or playerX in range(pokeBLX2,pokeBLX2 + 25) and playerY in range(pokeBLY2,pokeBLY2 + 25) :
-        print("detect bot left")
+        # print("detect bot left")
         setAdventureState(False)
         PokeSelection.setSelectionState(False)
         StartMenu.setStartState(False)
         Battle_Screen.setBattleState(True)
+        Battle_Screen.setupScreen()
 
     elif playerX in range(pokeBRX1,pokeBRX1 + 25) and playerY in range(pokeBRY1,pokeBRY1 + 25) or playerX in range(pokeBRX2,pokeBRX2 + 25) and playerY in range(pokeBRY2,pokeBRY2 + 25):
-        print("detect bot right")
+        # print("detect bot right")
         setAdventureState(False)
         PokeSelection.setSelectionState(False)
         StartMenu.setStartState(False)
@@ -143,7 +144,7 @@ def drawScreen():
         Battle_Screen.setupScreen()
 
     elif playerX in range(pokeTRX1,pokeTRX1 + 25) and playerY in range(pokeTRY1,pokeTRY1 + 25) or playerX in range(pokeTRX2,pokeTRX2 + 25) and playerY in range(pokeTRY2,pokeTRY2 + 25) :
-        print("detect top right")
+        # print("detect top right")
         setAdventureState(False)
         PokeSelection.setSelectionState(False)
         StartMenu.setStartState(False)
@@ -151,7 +152,7 @@ def drawScreen():
         Battle_Screen.setupScreen()
 
     elif playerX in range(pokeTLX1,pokeTLX1 + 25) and playerY in range(pokeTLY1,pokeTLY1 + 25) or playerX in range(pokeTLX2,pokeTLX2 + 25) and playerY in range(pokeTLY2,pokeTLY2 + 25) :
-        print("detect top left")
+        # print("detect top left")
         setAdventureState(False)
         PokeSelection.setSelectionState(False)
         StartMenu.setStartState(False)

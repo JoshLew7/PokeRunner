@@ -1,5 +1,7 @@
 # import PokeStats
 import PokeSelection
+import Adventure
+import StartMenu
 
 def setupScreen():
     from random import  randint
@@ -22,35 +24,50 @@ def setupScreen():
     
     global run
     
+    global setAdventureState
+    
+    def setAdventureState(state):
+        global modeState
+        modeState = state
+        
+    def getModeState():
+        return modeState
+    
+    # def setAdventureState(state):
+    #     global modeState
+    #     modeState = state
+        
+    
+    setAdventureState = False
     
     # Characters
     if PokeSelection.pokemon == "bulbasaur":
         bulb = True
-        print("bulb")
+        # print("bulb")
     else:
         bulb = False
-        print("no bulb")
+        # print("no bulb")
         
     if PokeSelection.pokemon == "charmander":
         cha = True
-        print("cha")
+        # print("cha")
     else:
         cha = False
-        print("no cha")
+        # print("no cha")
         
     if PokeSelection.pokemon == "squirtle":
         lil = True
-        print("lil")
+        # print("lil")
     else:
         lil = False
-        print("no lil")
+        # print("no lil")
    
      # Background
     img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)
     
     enemyHealth = 500
-    Health = 1000
+    Health = 500        
     
     enemypicturelist = [ loadImage("1-Bulbasaur.png"), loadImage("squirtle3.png"), 
                 loadImage("charmandere3.png"), loadImage("pika7.png")]
@@ -248,9 +265,24 @@ def getModeState():
     
 def drawScreen():
     from random import  randint
+    global Health,enemyHealth
     
     img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)
+    
+    if enemyHealth <= 0:
+        Adventure.setupScreen()
+        StartMenu.setStartState(False)
+        PokeSelection.setSelectionState(False)
+        setBattleState(False)
+        Adventure.setAdventureState(True) 
+                    
+    if Health <= 0:
+        StartMenu.setupScreen()
+        StartMenu.setStartState(True)
+        PokeSelection.setSelectionState(False)
+        setBattleState(False)
+        Adventure.setAdventureState(False)
     
 
     
@@ -275,9 +307,16 @@ def drawScreen():
     
     global run
     
+    global setAdventureState
+    
+    # def setAdventureState(state):
+    #     global modeState
+    #     modeState = state
+        
+    
    
 
-    enemyattacklist=[90,80,40]
+    enemyattacklist=[70,60,10]
     
 
 
@@ -291,37 +330,54 @@ def drawScreen():
     
         # img = enemy
         image(enemy, 395, 115, 150, 150)
-        
-
-
- 
+    
         # growl
         if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
-            print("growl")
+            # print("growl")
             enemyHealth = enemyHealth - 25
             Health-=(enemyattacklist[randint(0,2)])
-            
+
             #tackle  
         if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
-            print("tackle")
+            # print("tackle")
             enemyHealth = enemyHealth - 30
             Health-=(enemyattacklist[randint(0,2)])
             print(enemyHealth)
            
             # vine whip
         if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
-            print("vine whip")
-            enemyHealth = enemyHealth - 45
+            # print("vine whip")
+            enemyHealth = enemyHealth - 70
             Health-=(enemyattacklist[randint(0,2)])
-                
+            # if Health <= 0:
+            #     StartMenu.setStartState(True)
+        # if  <= 0:
+        #     Adventure.setupScreen()
+        #     Adventure.setAdventureState(True)
+            
+        # if Health <= 0:
+        #     StartMenu.setStartState(True)
+            
+            
+        
+
                 
             # toxic
         if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
-            print("toxic")
+            # print("toxic")
             enemyHealth = enemyHealth - 50
             Health-=(enemyattacklist[randint(0,2)])
+        
+        # if Health <= 0:
+        #      StartMenu.setStartState(True)
             
-            enemyattacklist=[90,80,40]
+        # if enemyHealth <= 0:
+        #     StartMenu.setStartState(True)
+        
+       
+            
+            
+            # enemyattacklist=[90,80,40]
             
         textSize(36) 
         fill(255)
@@ -334,11 +390,14 @@ def drawScreen():
         rect(380, 295, 215, 50)
         fill(0)
         text("Health: " + str(Health), 387, 340)
+        
             
             #run
         if mousePressed and mouseX >= 410 and mouseX <= 550 and mouseY >= 480 and mouseY <= 532:
-            print("run")
+            # print("run")
             run = True
+            Adventure.setAdventureState(True)
+            Adventure.setupScreen()
             
             # if run == True:
                 
@@ -401,7 +460,7 @@ def drawScreen():
          
            # scratch
         if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
-            print("scratch")
+            # print("scratch")
             #bulbAttack = bulbHealth - 30
             enemyHealth = enemyHealth - 40
             Health-=(enemyattacklist[randint(0,2)])
@@ -409,7 +468,7 @@ def drawScreen():
         
            # slash  
         if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
-            print("slash")
+            # print("slash")
             enemyHealth = enemyHealth - 70
             Health-=(enemyattacklist[randint(0,2)])
         
@@ -417,7 +476,7 @@ def drawScreen():
         
            # ember
         if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
-            print("ember")
+            # print("ember")
             enemyHealth = enemyHealth - 40
             Health-=(enemyattacklist[randint(0,2)])
     
@@ -425,16 +484,26 @@ def drawScreen():
         
            # fire spin
         if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
-            print("fire spin")
+            # print("fire spin")
             enemyHealth = enemyHealth - 35
             Health-=(enemyattacklist[randint(0,2)])
-        
-       
+    
         
            # run
         if mousePressed and mouseX >= 410 and mouseX <= 550 and mouseY >= 480 and mouseY <= 532:
-            print("run")
+            # print("run")
+            run = True
+            Adventure.setAdventureState(True)
+            Adventure.setupScreen()
           
+        # if enemyHealth <= 0:
+        #     Adventure.setupScreen()
+        #     Adventure.setAdventureState(True)
+        
+        # if Health <= 0:
+        #     StartMenu.setStartState(True)
+            
+            
         textSize(36)  
         fill(255)
         rect(10, 15, 205, 50)
@@ -531,7 +600,7 @@ def drawScreen():
          
          # headbutt
         if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
-            print("headbutt")
+            # print("headbutt")
             #bulbAttack = bulbHealth - 30
             enemyHealth = enemyHealth - 70
             Health-=(enemyattacklist[randint(0,2)])
@@ -539,7 +608,7 @@ def drawScreen():
         
           # tail whip  
         if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
-            print("tail whip")
+            # print("tail whip")
             enemyHealth = enemyHealth - 35
             Health-=(enemyattacklist[randint(0,2)])
         
@@ -547,7 +616,7 @@ def drawScreen():
         
         # bubble
         if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
-            print("bubble")
+            # print("bubble")
             enemyHealth = enemyHealth - 40
             Health-=(enemyattacklist[randint(0,2)])
     
@@ -555,7 +624,7 @@ def drawScreen():
         
           # water gun
         if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
-            print("water gun")
+            # print("water gun")
             enemyHealth = enemyHealth - 40
             Health-=(enemyattacklist[randint(0,2)])
         
@@ -563,7 +632,10 @@ def drawScreen():
         
           #run
         if mousePressed and mouseX >= 410 and mouseX <= 550 and mouseY >= 480 and mouseY <= 532:
-            print("run")
+            # print("run")
+            run = True
+            Adventure.setAdventureState(True)
+            Adventure.setupScreen()
             
         # set's lil squirt's attacks in the boxes
         if lil == True:
