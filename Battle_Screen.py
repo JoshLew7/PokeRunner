@@ -15,7 +15,8 @@ def setupScreen():
      # Background
     img = loadImage("BattleScreen.jpg")
     image(img, 0, 0, 600, 600)    
-    
+    battleBox = loadImage("battleBox.png")
+        
     enemypicturelist = [ 
     loadImage("1-Bulbasaur.png"), 
     loadImage("squirtle3.png"), 
@@ -70,34 +71,39 @@ def setupScreen():
 
     #Attack and run setup
     fill(255)
-    rect(30, 450, 150, 50)
+    # rect(30, 450, 150, 50)
+    image(battleBox,30,450,150,50)
     fill(0)
     textSize(25)
-    text(Attack1, 40, 490)
+    text(Attack1, 45, 490)
 
     fill(255)
-    rect(205, 450, 150, 50)
+    # rect(205, 450, 150, 50)
+    image(battleBox,205,450,150,50)
     fill(0)
     textSize(25)
-    text(Attack2, 208, 487)
+    text(Attack2, 220, 487)
     
     fill(255)
-    rect(205, 510, 150, 50)
+    # rect(205, 510, 150, 50)
+    image(battleBox,205,510,150,50)
     fill(0)
     textSize(25)
     text(Attack4, 225, 550)
     
     fill(255)
-    rect(30, 510, 150, 50)
+    # rect(30, 510, 150, 50)
+    image(battleBox,30,510,150,50)
     fill(0)
     textSize(25)
     text(Attack3, 45, 550)
     
     fill(255)
-    rect(410, 480, 140, 52)
+    # rect(410, 480, 140, 52)
+    image(battleBox,410,480,150,50)
     fill(0)
     textSize(30)
-    text("Run", 435, 525) 
+    text("Run", 435, 515) 
 
 def setBattleState(state):
     global modeState
