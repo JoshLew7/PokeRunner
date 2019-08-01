@@ -2,6 +2,7 @@ from random import  randint
 import PokeSelection
 import Adventure
 import StartMenu
+import timer
 
 def setupScreen():    
     global growl, tackle, vinewhip, toxic
@@ -10,7 +11,7 @@ def setupScreen():
     
     global enemyHealth, Health
     global bulb, cha, lil
-    global enemypicturelist, enemy
+    global enemypicturelist, enemy, playersTurn
     
      # Background
     img = loadImage("BattleScreen.jpg")
@@ -25,6 +26,8 @@ def setupScreen():
 
     enemyHealth = 500
     Health = 500 
+    
+    playersTurn = True
     
     enemy = (enemypicturelist[randint(0,3)])
             
@@ -114,9 +117,12 @@ def getModeState():
     
 def drawScreen():
     global enemyHealth, Health, enemyattacklist,enemypicturelist, enemy 
-    global run    
+    global run, playersTurn   
                
     enemyattacklist=[70,60,10]
+    
+    if timer.timeElapse() > 950:
+        playersTurn = True
         
     if enemyHealth <= 0:
         Adventure.setupScreen()
@@ -145,23 +151,35 @@ def drawScreen():
         image(enemy, 395, 115, 150, 150)
     
         # growl
-        if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
+        if mousePressed and playersTurn == True and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
             enemyHealth = enemyHealth - 25
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
 
         #tackle  
-        if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
+        if mousePressed and playersTurn == True and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
             enemyHealth = enemyHealth - 30
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
            
         # vine whip
-        if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
+        if mousePressed and playersTurn == True and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
             enemyHealth = enemyHealth - 70
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
        
         # toxic
-        if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
+        if mousePressed and playersTurn == True and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
             enemyHealth = enemyHealth - 50
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
      
       # cha fuego's attacks       
@@ -171,23 +189,35 @@ def drawScreen():
         image(img2, 100, 350, 100, 100)
          
            # scratch
-        if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
+        if mousePressed and playersTurn == True and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
             enemyHealth = enemyHealth - 40
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
 
            # slash  
-        if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
+        if mousePressed and playersTurn == True and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
             enemyHealth = enemyHealth - 70
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
 
            # ember
-        if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
+        if mousePressed and playersTurn == True and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
             enemyHealth = enemyHealth - 40
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
 
            # fire spin
-        if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
+        if mousePressed and playersTurn == True and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
             enemyHealth = enemyHealth - 35
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
      
     # lil squirt attacks       
@@ -197,23 +227,35 @@ def drawScreen():
         image(enemy, 395, 115, 150, 150)
          
         # headbutt
-        if mousePressed and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
+        if mousePressed and playersTurn == True and mouseX <= 190 and mouseX >= 40  and mouseY <= 540 and mouseY >= 490:
             enemyHealth = enemyHealth - 70
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
        
         # tail whip  
-        if mousePressed and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
+        if mousePressed and playersTurn == True and mouseX >= 30 and mouseX <= 180  and mouseY <= 490 and mouseY >= 50:
             enemyHealth = enemyHealth - 35
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
             
         # bubble
-        if mousePressed and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
+        if mousePressed and playersTurn == True and mouseX <= 355 and mouseX >= 205 and mouseY >= 450 and mouseY <= 500:
             enemyHealth = enemyHealth - 40
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
 
         # water gun
-        if mousePressed and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
+        if mousePressed and playersTurn == True and mouseX >= 205 and mouseX <= 355 and mouseY >= 510 and mouseY <= 560:
             enemyHealth = enemyHealth - 40
+            playersTurn = False
+            
+            timer.startTimer()
             Health-=(enemyattacklist[randint(0,2)])
    
 #Update Health     
