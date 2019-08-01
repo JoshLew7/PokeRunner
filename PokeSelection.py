@@ -16,7 +16,7 @@ def setupScreen():
     backgroundImg = loadImage("pokeball.png")
     image(backgroundImg,0,0,600,600)
     starterText = loadImage("starterText.png")
-    image(starterText,112,0)
+    image(starterText,105,0)
     
     #Squirtle
     water = loadImage("squirtle3.png")
