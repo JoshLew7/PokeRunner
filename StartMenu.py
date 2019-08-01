@@ -5,8 +5,6 @@ import PokeSelection
 import PokeStats
 import Battle_Screen
 
-global W,L
-
 def setupScreen():
     rect(251,326,123,32)
     backgroundImg = loadImage("pokeground.jpg")
