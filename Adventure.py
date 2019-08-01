@@ -5,7 +5,7 @@ import Battle_Screen
 
 def setupScreen():
     global playerX,playerY
-    global backgroundImg,character,sprite
+    global backgroundImg,character,sprite,newCity,city
     global frontFacing,backFacing,leftFacing,rightFacing
     global pokeBLX1,pokeBLY1,pokeBRX1,pokeBRY1,pokeTLX1,pokeTLY1,pokeTRX1,pokeTRY1
     global pokeBLX2,pokeBLY2,pokeBRX2,pokeBRY2,pokeTLX2,pokeTLY2,pokeTRX2,pokeTRY2
@@ -41,12 +41,14 @@ def setupScreen():
     pokeTLX2 = int(random(10,126))
     pokeTLY2 = int(random(96,153))
     
-    backgroundImg = loadImage("Pokemap.png")
+    city = loadImage("Pokemap.png")
     frontFacing = loadImage("frontFacing.png")
     backFacing = loadImage("backFacing.png")
     leftFacing = loadImage("leftSideProfile.png")
     rightFacing = loadImage("rightSideProfile.png")
+    newCity = loadImage("pokecity2.png")
     sprite = frontFacing
+    backgroundImg = city
 
     #Bottom Left Grass
     fill(255)
@@ -104,11 +106,12 @@ def getModeState():
 
     
 def drawScreen():
+    global newCity,city
     global backgroundImg,sprite
     global playerX,playerY
     global grassBLX,grassBLY,pokeBLX,pokeBLY
     global frontFacing,backFacing,leftFacing,rightFacing
-    image(backgroundImg,0,0)
+    image(backgroundImg,0,0,600,600)
     image(sprite,playerX,playerY,25,25)
     playerMiddleX = playerX + 12
     playerMiddleY = playerY + 12
@@ -178,3 +181,11 @@ def drawScreen():
         playerY = 526
     elif playerX in range(385,600) and playerY > 527:
         playerY = 526
+    elif playerY > 585:
+        backgroundImg = newCity
+        playerX = 332
+        playerY = 25
+    elif playerY < 6:
+        backgroundImg = city
+        playerX = 350
+        playerY = 580
